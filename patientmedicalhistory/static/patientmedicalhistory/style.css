@@ -1,0 +1,450 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.medicalhistory-page {
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-family: 'Helvetica Neue Light', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif, Arial;
+    font-weight: 300;
+    color: #4CAF50;
+}
+html, body {
+    background: #FFFFFF;
+    background: -webkit-linear-gradient(right, #FFFFFF, #FFFFFF);
+    background: -moz-linear-gradient(right, #FFFFFF, #FFFFFF);
+    background: -o-linear-gradient(right, #FFFFFF, #FFFFFF);
+    background: linear-gradient(to left, #FFFFFF, #FFFFFF);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.form input {
+    float: left;
+}
+.form input[type=text] {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  width: 91%;
+  padding: 3px;
+  box-sizing: border-box;
+  font-size: 12px;
+  position: relative;
+}
+.form input[type=submit] {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 50%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #4CAF50;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.form .register-form {
+  display: none;
+}
+
+.form input[type=radio] {
+  position:relative;
+  top: 1px;
+  -webkit-font-smoothing: antialiased;
+  resize: none;
+}
+
+.form textarea {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  width: 70%;
+  height: 80px;
+  max-height: 100%;
+  max-width: 100%;
+  width: 91%;
+  box-sizing: border-box;
+  font-size: 12px;
+  position: relative;
+  resize: none;
+}
+
+.form fieldset {
+    position: relative;
+    padding: 2px 12px 1px 12px;
+    margin: 0 0 3px 0;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .a {
+  color: #EF3B3A;
+}
+
+h2 {
+    border-bottom: 1px solid #DDD;
+}
+
+label {
+    float: left;
+    padding-left: 2px;
+    padding-right: 6px;
+    margin-bottom: 2px;
+}
+
+p {
+    clear: both;
+}
+
+#errorContainer {
+    display: none;
+    overflow: auto;
+    background-color: #FFDDDD;
+    border: 1px solid #FF2323;
+    padding-top: 0;
+}
+
+#errorContainer label {
+    text-align: left;
+    width: auto;
+    padding: 0;
+    margin: 0 0 0 10px;
+    float: none;
+    clear: none;
+    display: inline;
+    color: #CC3366;
+    font-size: 10px;
+    border-top: 1px dotted #CC3366;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.medical-history-group {
+    vertical-align: top;
+    margin: 0;
+    display: inline-block;
+}
+
+.choice {
+    display: inline-block;
+    width: 130px;
+}
+
+.medical-info {
+    display: inline-block;
+    width: 700px;
+}
+
+.medical-info label {
+    margin-right: 15px;
+}
+
+.rowspan {
+    width: 700px;
+}
+
+.positioning-1 {
+    position: relative;
+    top: -60px;
+}
+.positioning-2 {
+    position: relative;
+    top: -114px;
+}
+
+.medical-history {
+    display: inline-block;
+    width: 510px;
+}
+
+.women-info {
+    display: inline-block;
+    width: 300px;
+}
+
+.women-info label {
+    margin-right: 3px;
+}
+
+.allergy-info-group {
+    display: inline-block;
+}
+
+.allergy-info-group .allergy-info {
+    display: inline-block;
+    width: 170px;
+}
+
+.allergy-info:last-child {
+    width: 1100px;
+}
+
+#allergyOtherInfo {
+    width: 900px;
+}
+
+.allergy-info label {
+    margin-right: 10px;
+}
+
+.symptom-info {
+    display: inline-block;
+}
+
+.symptom-info fieldset {
+}
+
+.symptom-info-group {
+    float: left;
+    display: inline-block;
+    width: 330px;
+}
+
+.symptom-info .medical-history {
+    display: inline-block;
+    width: 210px;
+}
+
+.symptom-info .choice {
+    display: inline-block;
+    width: 110px;
+}
+
+.divider:nth-child(4) {
+    position: absolute;
+    left: 24.8%;
+    top: 7%;
+    bottom: 3%;
+    border-left: 1px solid black;
+}
+
+.divider:nth-child(6) {
+    position: absolute;
+    left: 49.3%;
+    top: 7%;
+    bottom: 3%;
+    border-left: 1px solid black;
+}
+
+.divider:nth-child(8) {
+    position: absolute;
+    left: 73.9%;
+    top: 7%;
+    bottom: 3%;
+    border-left: 1px solid black;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.clearfix::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+#checkNo {
+    width: 100%;
+    display: inline-block;
+}
+
+@media only screen and (min-width: 1400px) {
+    html, body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .form {
+        position: relative;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 1350px;
+        margin: 0 auto;
+        padding: 0 25px 25px 25px;
+        text-align: left;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+}
+
+@media only screen and (max-width: 1380px) {
+    html, body {
+        margin: 0;
+    }
+
+    .form {
+        position: relative;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 660px;
+        padding: 0;
+        text-align: left;
+    }
+
+    .medical-history,
+    .medical-info,
+    .allergy-info:last-child,
+    #allergyOtherInfo {
+        width: 660px;
+    }
+
+    li {
+        border-bottom: 1px dotted gray;
+    }
+
+    fieldset {
+        width: 660px;
+        padding: 3px;
+    }
+
+    .positioning-1 {
+        position: relative;
+        top: 10px;
+    }
+
+    .positioning-2 {
+        position: relative;
+        top: 30px;
+    }
+
+    .rowspan {
+        width: 660px;
+    }
+
+    .divider:nth-child(4),
+    .divider:nth-child(6) {
+        position: absolute;
+        left: 48.7%;
+        top: 5%;
+        bottom: 2%;
+        border-left: 1px solid black;
+    }
+    .divider:nth-child(8) {
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    html, body {
+        margin: 0;
+    }
+
+    .form {
+        position: relative;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 660px;
+        padding: 0;
+        text-align: left;
+    }
+
+    .medical-history,
+    .medical-info,
+    .allergy-info:last-child,
+    #allergyOtherInfo {
+        width: 300px;
+    }
+
+    li {
+        border-bottom: 1px dotted gray;
+    }
+
+    fieldset {
+        width: 330px;
+        padding: 3px;
+    }
+
+    .positioning-1 {
+        position: relative;
+        top: 10px;
+    }
+
+    .positioning-2 {
+        position: relative;
+        top: 30px;
+    }
+
+    .rowspan {
+        width: 300px;
+    }
+
+    .divider:nth-child(4),
+    .divider:nth-child(6),
+    .divider:nth-child(8) {
+        border: none;
+    }
+}

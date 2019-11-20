@@ -1,0 +1,568 @@
+﻿<!doctype html>
+<html>
+<head>
+{% load static %}
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet" href="{% static 'patientinsurance/jslib/jquery-ui.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'patientinsurance/jslib/jquery-ui.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'patientinsurance/style.css' %}" />
+<script src="{% static 'patientinsurance/jslib/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'patientinsurance/jslib/jquery.validate.min.js' %}"></script>
+<script src="{% static 'patientinsurance/jslib/jquery-ui.min.js' %}"></script>
+
+<script type="text/javascript">
+
+$().ready(function() {
+    $("#birthdate").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: "yy-mm-dd",
+		yearRange: '1910:2016'
+	});
+	
+	$("#birthdateEx").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: "yy-mm-dd",
+		yearRange: '1910:2016'
+	});
+	
+	$("#patientInsurInfoConfirm").dialog({ 
+		autoOpen: false,
+		resizable: true,
+		modal: false,
+		height: "auto",
+		width: 910
+	});
+	
+	$("#patientInsurForm").validate({
+		rules: {
+			lastName: "required",
+			firstName: "required",
+			initial: "required",
+			relationToPatient: "required",	
+			birthdate: "required",
+			socSecNum: "required",
+			address: "required",
+			city: "required",
+			state: "required",
+			zip: "required",
+			homePhone: "required",
+			cellPhone: "required",
+			email: "required",
+			employer: "required",
+			employerOccu: "required",
+			employerBusAddr: "required",
+			employerBusPhone: "required",
+			employerBusEmail: "required",
+			insurComp: "required",
+			insurCompPhone: "required",
+			insurCompCont: "required",
+			insurGroupNum: "required",
+			insurPolicyNum: "required",
+			dependents: "required",
+			exInsurInfoYes: "required"
+		},
+		messages: {
+			lastName: "Please enter your last name!",
+			firstName: "Please enter your first name!",
+			initial: "Please enter your initial!",
+			relationToPatient: "Please enter your relationship to the patient!",		
+			birthdate: "Please select your birth date!",
+			socSecNum: "Plaease your social security number!",
+			address: "Please enter your address!",
+			city: "Please enter your city!",
+			state: "Please select your state!",
+			zip: "Please enter your zip code!",
+			homePhone: "Please enter your home phone number!",
+			cellPhone: "Please enter your cell phone number!",
+			email: "Please enter your email!",
+			employer: "Please enter your employer's name!",
+			employerOccu: "Please enter your employer's occupation!",
+			employerBusAddr: "Please enter the business address of your employer!",
+			employerBusPhone: "Please enter the business phone number of your employer!",
+			employerBusEmail: "Please enter the business email of your employer!",
+			insurComp: "Please enter the name of your insurance company!",
+			insurCompPhone: "Please enter the phone number of the insurance company!",
+			insurCompCont: "Please enter the contact of the insurance company!",
+			insurGroupNum: "Please enter the group number!",
+			insurPolicyNum: "Please enter the policy number of your insurance!",
+			dependents: "Please enter the names of your dependents!",
+			exInsurInfoYes: "Please choose if you have extra insurance!"
+		},
+		errorContainer: $("#errorContainer"),
+		errorLabelContainer: $("#errorContainer ul"),
+		wrapper: "li"
+	});
+	
+	$("#patientInsurForm").on('submit', function(e) {
+		if ($("#patientInsurForm").valid()) {
+			e.preventDefault();
+			$.ajax({
+				type:'post',
+				data:$('#patientInsurForm').serialize(),
+				success:function(){}
+			});
+			var form1 = $("#patientInsurForm"), 
+				form2 = $("#patientInsurInfoConfirmForm"); 
+			$(':input[name]', form2).val(function(){
+				if(this.name == "exInsurInfoYes") {
+					if ($('#patientInsurForm input:radio[name=exInsurInfoYes][value=yes]').is(':checked') &&
+						$('#patientInsurForm input:radio[name=exInsurInfoYes][value=no]').not(':checked')) {
+						return $(':input[name='+ this.name +'][value=yes]', form1).val();
+					}
+					else if ($('#patientInsurForm input:radio[name=exInsurInfoYes][value=yes]').not(':checked') &&
+							 $('#patientInsurForm input:radio[name=exInsurInfoYes][value=no]').is(':checked')) {
+						return $(':input[name='+ this.name +'][value=no]', form1).val();
+					}
+				}
+				return $(':input[name='+ this.name +']', form1).val();
+			});
+			$("#patientInsurInfoConfirm").dialog('open');
+		}
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<div class="insurance-page">
+      <div class="form">
+<table class="cols2">
+<tr>
+<td>
+<form id="patientInsurForm">
+{% csrf_token %}
+
+<table class="cols6">
+  {% if insinfo_list %}
+	{% for insinfo in insinfo_list %}
+  <tr>
+    <td><input type="hidden" name="pkPrimary" value="{{insinfo.id}}"/></td>
+    <td colspan="5"><h1><div align="center">Primary Insurance</div></h1></td>
+  </tr>
+  <tr>
+    <td><div align="right">Person Responsible for Account:</div></td>
+    <td colspan="2">
+      <input name="lastName" type="text" id="lastName" size="30" placeholder="Last Name" value="{{insinfo.last_name}}"/>    </td>
+    <td colspan="2"><input name="firstName" type="text" id="firstName" size="30" placeholder="First Name" value="{{insinfo.first_name}}"/></td>
+    <td width="140"><input name="initial" type="text" id="initial" size="15" placeholder="Initial" value="{{insinfo.initial}}"/></td>
+  </tr>
+
+  <tr>
+    <td><div align="right">Relation to Patient:</div></td>
+    <td><input name="relationToPatient" type="text" id="relationToPatient" size="15" value="{{insinfo.relationToPatient}}"/></td>
+    <td><div align="right">Birthdate:</div></td>
+    <td><input name="birthdate" type="text" id="birthdate" size="15" value="{{insinfo.dob|date:'Y-m-d'}}"/></td>
+    <td><div align="right">Soc. Sec #:</div></td>
+    <td><input name="socSecNum" type="text" id="socSecNum" size="15" value="{{insinfo.socSec}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Address:</div></td>
+    <td colspan="5"><input name="address" type="text" id="address" size="99" value="{{insinfo.address}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">City:</div></td>
+    <td><input name="city" type="text" id="city" size="15" value="{{insinfo.city}}"/></td>
+    <td><div align="right">State:</div></td>
+    <td><input name="state" type="text" id="state" size="15" value="{{insinfo.state}}"/></td>
+    <td><div align="right">Zip:</div></td>
+    <td><input name="zip" type="text" id="zip" size="15" value="{{insinfo.zip}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Home Phone:</div></td>
+    <td><input name="homePhone" type="text" id="homePhone" size="15" value="{{insinfo.homephone}}"/></td>
+    <td><div align="right">Cell Phone:</div></td>
+    <td><input name="cellPhone" type="text" id="cellPhone" size="15" value="{{insinfo.cellphone}}"/></td>
+    <td><div align="right">E-mail:</div></td>
+    <td><input name="email" type="text" id="email" size="15" value="{{insinfo.email}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Person Responsible Employed by:</div></td>
+    <td colspan="2"><input name="employer" type="text" id="employer" size="30" value="{{insinfo.employerName}}"/></td>
+    <td><div align="right">Occupation:</div></td>
+    <td colspan="2"><input name="employerOccu" type="text" id="employerOccu" size="30" value="{{insinfo.employerOccupation}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Business Address:</div></td>
+    <td colspan="2"><input name="employerBusAddr" type="text" id="employerBusAddr" size="30" value="{{insinfo.employerBusAddr}}"/></td>
+    <td><div align="right">Business Phone:</div></td>
+    <td colspan="2"><input name="employerBusPhone" type="text" id="employerBusPhone" size="30" value="{{insinfo.employerBusPhone}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Business E-mail:</div></td>
+    <td colspan="2"><input name="employerBusEmail" type="text" id="employerBusEmail" size="30" value="{{insinfo.employerBusEmail}}"/></td>
+    <td><div align="right"></div></td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="right">Insurance Company:</div></td>
+    <td colspan="2"><input name="insurComp" type="text" id="insurComp" size="30" value="{{insinfo.insurComp}}"/></td>
+    <td><div align="right">Phone:</div></td>
+    <td colspan="2"><input name="insurCompPhone" type="text" id="insurCompPhone" size="30" value="{{insinfo.insurCompPhone}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Contact #:</div></td>
+    <td><input name="insurCompCont" type="text" id="insurCompCont" size="15" value="{{insinfo.insurContNum}}"/></td>
+    <td><div align="right">Group #:</div></td>
+    <td><input name="insurGroupNum" type="text" id="insurGroupNum" size="15" value="{{insinfo.insurGroupNum}}"/></td>
+    <td><div align="right">Policy #:</div></td>
+    <td><input name="insurPolicyNum" type="text" id="insurPolicyNum" size="15" value="{{insinfo.insurSubscNum}}"/></td>
+  </tr>
+  <tr>
+    <td><div align="right">Name(s) of other Dependents:</div></td>
+    <td colspan="5"><input name="dependents" type="text" id="dependents" size="99" value="{{insinfo.dependentName}}"/></td>
+  </tr>
+    {% endfor %}
+  {% endif %}
+  
+    
+  <tr>
+    <td><div align="right">Is patient covered by additional insurance?</div></td>
+    <td>
+       <table>
+       <tr>
+       <td><input type="radio" name="exInsurInfoYes" value="yes" /></td><td> <span>YES</span></td>
+       </tr>
+       </table>
+    </td>
+    <td>
+      <table>
+       <tr>
+       <td><input type="radio" name="exInsurInfoYes" value="no" /></td><td> <span>NO</span></td>
+       </tr>
+       </table>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="5"><h1><div align="center">Additional Insurance</div></h1></td>
+  </tr>
+  <tr>
+    <td><div align="right">Person Responsible for Account:</div></td>
+    <td colspan="2"><input name="lastNameEx" type="text" id="lastNameEx" size="30" placeholder="Last Name"/></td>
+    <td colspan="2"><input name="firstNameEx" type="text" id="firstNameEx" size="30" placeholder="First Name"/></td>
+    <td><input name="initialEx" type="text" id="initialEx" size="15" placeholder="Initial"/></td>
+  </tr>
+
+  <tr>
+    <td><div align="right">Relation to Patient:</div></td>
+    <td><input name="relationToPatientEx" type="text" id="relationToPatientEx" size="15" /></td>
+    <td><div align="right">Birthdate:</div></td>
+    <td>
+
+        <input name="birthdateEx" type="text" id="birthdateEx" size="15"/></td>
+    <td><div align="right">Soc. Sec #:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="socSecNumEx" type="text" id="socSecNumEx" size="15" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Address:</div></td>
+    <td colspan="5"><input name="addressEx" type="text" id="addressEx" size="99" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">City:</div></td>
+    <td><input name="cityEx" type="text" id="cityEx" size="15" /></td>
+    <td><div align="right">State:</div></td>
+    <td>
+      <div align="justify">
+        <input name="stateEx" type="text" id="stateEx" size="15" />
+      </div></td>
+    <td><div align="right">Zip:</div></td>
+    <td>
+      
+
+        <input name="zipEx" type="text" id="zipEx" size="15" /></td></tr>
+  <tr>
+    <td><div align="right">Home Phone:</div></td>
+    <td><input name="homePhoneEx" type="text" id="homephoneEx" size="15" /></td>
+    <td><div align="right">Cell Phone:</div></td>
+    <td>
+        <input name="cellPhoneEx" type="text" id="cellPhoneEx" size="15" /></td>
+    <td><div align="right">E-mail:</div></td>
+    <td>
+      
+        <input name="emailEx" type="text" id="emailEx" size="15" /></td></tr>
+  <tr>
+    <td><div align="right">Person Responsible Employed by:</div></td>
+    <td colspan="2"><input name="employerEx" type="text" id="employerEx" size="30" /></td>
+    <td><div align="right">Occupation:</div></td>
+    <td colspan="2">
+      
+   
+        <input name="employerOccuEx" type="text" id="employerOccuEx" size="30" />      </td></tr>
+  <tr>
+    <td><div align="right">Business Address:</div></td>
+    <td colspan="2"><input name="employerBusAddrEx" type="text" id="employerBusAddrEx" size="30" /></td>
+    <td><div align="right">Business Phone:</div></td>
+    <td colspan="2">
+      
+    
+        <input name="employerBusPhoneEx" type="text" id="employerBusPhoneEx" size="30" />     </td></tr>
+  <tr>
+    <td><div align="right">Business E-mail:</div></td>
+    <td colspan="2"><input name="employerBusEmailEx" type="text" id="employerBusEmailEx" size="30" /></td>
+    <td><div align="right"></div></td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td><div align="right">Insurance Company:</div></td>
+    <td colspan="2"><input name="insurCompEx" type="text" id="insurCompEx" size="30" /></td>
+    <td><div align="right">Phone:</div></td>
+    <td colspan="2">
+      
+      
+        <input name="insurCompPhoneEx" type="text" id="insurCompPhoneEx" size="30" /> </td></tr>
+  <tr>
+    <td><div align="right">Contact #:</div></td>
+    <td><input name="insurCompContEx" type="text" id="insurCompContEx" size="15" /></td>
+    <td><div align="right">Group #:</div></td>
+    <td>
+      <div align="justify">
+        <input name="insurGroupNumEx" type="text" id="insurGroupNumEx" size="15" />
+      </div></td>
+    <td><div align="right">Policy #:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="insurPolicyNumEx" type="text" id="insurPolicyNumEx" size="15" />
+      </div></td></tr>
+   <tr>
+     <td><div align="right">Name(s) of other Dependents:</div></td>
+    <td colspan="5"><input name="dependentsEx" type="text" id="dependentsEx" size="99" /></td>
+  </tr>
+  <tr>
+  	<td colspan="5"></td>
+    <td> <button id="save">save</button>
+            <a class="message" href="{% url 'dashboard:index'%}">
+                <div style="width:80px; display:inline-block; margin-left:4px; padding: 14px; text-align:center; border:1px solid #4CAF50">
+                    Dashboard
+                </div>
+            </a>
+    </td>
+  </tr>
+</table>
+</form>
+</td>
+
+<td>
+<div id="errorContainer">
+    <p>Please correct the following errors and try again:</p>
+    <ul/>
+</div>
+</td>
+
+</tr>
+</table>
+</div>
+</div>
+
+<!--below is confirmation dialog-->
+<div id="patientInsurInfoConfirm" title="Confirmation">
+<div class="insurance-page">
+      <div class="form">
+<form action="{% url 'patientinsurance:modifyInsurInfo'%}" method="post" id="patientInsurInfoConfirmForm">
+{% csrf_token %}
+<table class="cols6">
+<tr>
+    <td colspan="6"><h1><div align="center">Primary Insurance</div></h1></td>
+    </tr>
+  <tr>
+    <td><div align="right">Person Responsible for Account:</div><input type="hidden" name="pkPrimary"/></td>
+    <td colspan="2">
+      <input name="lastName" type="text" id="lastName" value="Last Name" size="30" />
+    </td>
+    <td colspan="2"><input name="firstName" type="text" id="firstName" value="First Name" size="30" /></td>
+    <td><input name="initial" type="text" id="initial" value="Initial" size="15" /></td>
+  </tr>
+
+  <tr>
+    <td><div align="right">Relation to Patient:</div></td>
+    <td><input name="relationToPatient" type="text" id="relationToPatient" size="15" /></td>
+    <td><div align="right">Birthdate:</div></td>
+    <td><input name="birthdate" type="text" id="birthdate" size="15" /></td>
+    <td><div align="right">Soc. Sec #:</div></td>
+    <td><input name="socSecNum" type="text" id="socSecNum" size="15" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Address:</div></td>
+    <td colspan="5"><input name="address" type="text" id="address" size="86" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">City:</div></td>
+    <td><input name="city" type="text" id="city" size="15" /></td>
+    <td><div align="right">State:</div></td>
+    <td><input name="state" type="text" id="state" size="15" /></td>
+    <td><div align="right">Zip:</div></td>
+    <td><input name="zip" type="text" id="zip" size="15" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Home Phone:</div></td>
+    <td><input name="homePhone" type="text" id="homePhone" size="15" /></td>
+    <td><div align="right">Cell Phone:</div></td>
+    <td><input name="cellPhone" type="text" id="cellPhone" size="15" /></td>
+    <td><div align="right">E-mail:</div></td>
+    <td><input name="email" type="text" id="email" size="15" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Person Responsible Employed by:</div></td>
+    <td colspan="2"><input name="employer" type="text" id="employer" size="30" /></td>
+    <td><div align="right">Occupation:</div></td>
+    <td colspan="2"><input name="employerOccu" type="text" id="employerOccu" size="30" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Business Address:</div></td>
+    <td colspan="2"><input name="employerBusAddr" type="text" id="employerBusAddr" size="30" /></td>
+    <td><div align="right">Business Phone:</div></td>
+    <td colspan="2"><input name="employerBusPhone" type="text" id="employerBusPhone" size="30" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Business E-mail:</div></td>
+    <td colspan="2"><input name="employerBusEmail" type="text" id="employerBusEmail" size="30" /></td>
+    <td><div align="right"></div></td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="right">Insurance Company:</div></td>
+    <td colspan="2"><input name="insurComp" type="text" id="insurComp" size="30" /></td>
+    <td><div align="right">Phone:</div></td>
+    <td colspan="2"><input name="insurCompPhone" type="text" id="insurCompPhone" size="30" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Contact #:</div></td>
+    <td><input name="insurCompCont" type="text" id="insurCompCont" size="15" /></td>
+    <td><div align="right">Group #:</div></td>
+    <td><input name="insurGroupNum" type="text" id="insurGroupNum" size="15" /></td>
+    <td><div align="right">Policy #:</div></td>
+    <td><input name="insurPolicyNum" type="text" id="insurPolicyNum" size="15" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Name(s) of other Dependents:</div></td>
+    <td colspan="5"><input name="dependents" type="text" id="dependents" size="86" /></td>
+  </tr>
+  <tr>
+    <td colspan="6"><h1><div align="center">Additional Insurance</div></h1></td>
+    </tr>
+
+  <tr>
+    <td><div align="right">Person Responsible for Account:</div></td>
+    <td colspan="2"><input name="lastNameEx" type="text" id="lastNameEx" value="Last Name" size="30" /></td>
+    <td colspan="2"><input name="firstNameEx" type="text" id="firstNameEx" value="First Name" size="30" /></td>
+    <td><input name="initialEx" type="text" id="initialEx" value="Initial" size="15" /></td>
+  </tr>
+
+  <tr>
+    <td><div align="right">Relation to Patient:</div></td>
+    <td><input name="relationToPatientEx" type="text" id="relationToPatientEx" size="15" /></td>
+    <td><div align="right">Birthdate:</div></td>
+    <td>
+      <div align="justify">
+        <input name="birthdateEx" type="text" id="birthdateEx" size="15" />
+      </div></td>
+    <td><div align="right">Soc. Sec #:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="socSecNumEx" type="text" id="socSecNumEx" size="15" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Address:</div></td>
+    <td colspan="5"><input name="addressEx" type="text" id="addressEx" size="86" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">City:</div></td>
+    <td><input name="cityEx" type="text" id="cityEx" size="15" /></td>
+    <td><div align="right">State:</div></td>
+    <td>
+      <div align="justify">
+        <input name="stateEx" type="text" id="stateEx" size="15" />
+      </div></td>
+    <td><div align="right">Zip:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="zipEx" type="text" id="zipEx" size="15" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Home Phone:</div></td>
+    <td><input name="homephoneEx" type="text" id="homephoneEx" size="15" /></td>
+    <td><div align="right">Cell Phone:</div></td>
+    <td>
+      <div align="justify">
+        <input name="cellPhoneEx" type="text" id="cellPhoneEx" size="15" />
+      </div></td>
+    <td><div align="right">E-mail:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="emailEx" type="text" id="emailEx" size="15" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Person Responsible Employed by:</div></td>
+    <td colspan="2"><input name="employerEx" type="text" id="employerEx" size="30" /></td>
+    <td><div align="right">Occupation:</div></td>
+    <td colspan="2">
+      
+      <div align="justify">
+        <input name="employerOccuEx" type="text" id="employerOccuEx" size="30" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Business Address:</div></td>
+    <td colspan="2"><input name="employerBusAddrEx" type="text" id="employerBusAddrEx" size="30" /></td>
+    <td><div align="right">Business Phone:</div></td>
+    <td colspan="2">
+      
+      <div align="justify">
+        <input name="employerBusPhoneEx" type="text" id="employerBusPhoneEx" size="30" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Business E-mail:</div></td>
+    <td colspan="2"><input name="employerBusEmailEx" type="text" id="employerBusEmailEx" size="30" /></td>
+    <td><div align="right"></div></td>
+    <td colspan="2"><div align="justify"></div></td>
+  </tr>
+  <tr>
+    <td><div align="right">Insurance Company:</div></td>
+    <td colspan="2"><input name="insurCompEx" type="text" id="insurCompEx" size="30" /></td>
+    <td><div align="right">Phone:</div></td>
+    <td colspan="2">
+      
+      <div align="justify">
+        <input name="insurCompPhoneEx" type="text" id="insurCompPhoneEx" size="30" />
+      </div></td></tr>
+  <tr>
+    <td><div align="right">Contact #:</div></td>
+    <td><input name="insurCompContEx" type="text" id="insurCompContEx" size="15" /></td>
+    <td><div align="right">Group #:</div></td>
+    <td>
+      <div align="justify">
+        <input name="insurGroupNumEx" type="text" id="insurGroupNumEx" size="15" />
+      </div></td>
+    <td><div align="right">Policy #:</div></td>
+    <td>
+      
+      <div align="justify">
+        <input name="insurPolicyNumEx" type="text" id="insurPolicyNumEx" size="15" />
+      </div></td></tr>
+   <tr>
+     <td><div align="right">Name(s) of other Dependents:</div></td>
+    <td colspan="5"><input name="dependentsEx" type="text" id="dependentsEx" size="86" /></td>
+  </tr>
+  <tr>
+  	<td colspan="5"><input type="hidden" name="exInsurInfoYes" /></td>
+    <td> <input type="submit" value="Save"/> </td>
+  </tr>
+</table>
+</form>
+</div>
+</div>
+</div>
+</body>
+</html>

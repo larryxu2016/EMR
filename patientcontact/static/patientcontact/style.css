@@ -1,0 +1,196 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.contactinfo-page {
+  width: 95%;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+h1 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-family: 'Helvetica Neue Light', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif, Arial;
+    font-weight: 300;
+    color: #4CAF50;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 100%;
+  margin: 0 auto 0;
+  padding: 10px;
+  text-align: left;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 8px;
+  width: 71%;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  position: relative;
+}
+
+.form select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 8px;
+  width: 71%;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  position: relative;
+}
+
+input[type=submit] {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 50%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 25%;
+  border: 0;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+    margin: 15px 0 0;
+    font-size: 14px;
+    color: #4CAF50;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #FFFFFF;
+  background: -webkit-linear-gradient(right, #FFFFFF, #FFFFFF);
+  background: -moz-linear-gradient(right, #FFFFFF, #FFFFFF);
+  background: -o-linear-gradient(right, #FFFFFF, #FFFFFF);
+  background: linear-gradient(to left, #FFFFFF, #FFFFFF);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+h2 {
+    border-bottom: 1px solid #DDD;
+}
+
+label {
+    width: 10em;
+    float: center;
+}
+
+p {
+    clear: both;
+}
+
+table {
+	width: 100%;
+	position: relative;
+	cellspacing: 2;
+	border: 2px;
+	border-color:#000000;
+}
+.cols3 td:nth-child(1){width:250px;}
+.cols3 td:nth-child(2){width:80px;}
+.cols3 td:nth-child(3){width:250px;}
+.cols3 td:nth-child(4){width:250px;}
+
+.cols2 td:nth-child(1){width:40px;}
+.cols2 td:nth-child(2){width:90px;}
+
+/* ----- error message for field validation ----- */
+
+
+#errorContainer {
+    display: none;
+    overflow: auto;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 12px;
+    margin: 0 0 10px 0;
+    color: #ba2121;
+    border: 1px solid #ba2121;
+    border-radius: 4px;
+    background-color: #fff;
+    background-position: 5px 12px;
+}
+
+#errorContainer label {
+    text-align: left;
+	width: auto;
+	padding: 0;
+	margin: 0 0 0 10px;
+	float: none;
+	clear: none;
+	display: inline;
+	color: #CC3366;
+	font-size: 10px;
+	border-top: 1px dotted #CC3366;
+}

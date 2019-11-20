@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{% static 'patientmedicalhistory/style.css' %}" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <div class="medicalhistory-page">
+        <div class="form">
+            <h1>Patient Medical History :</h1>
+            <form action="{% url 'patientmedicalhistory:saveMedHistoryInfo'%}" method="post" id="medicalhistoryform">
+                {% csrf_token %}
+
+                <ol class="clearfix">
+                    {% block content %}
+
+                        {% block questionbefore %}
+                        {% endblock %}
+
+                        {% block questionafter %}
+                        {% endblock %}
+
+                        {% block choicebefore %}
+                        {% endblock %}
+
+                        {% block choiceafter %}
+                        {% endblock %}
+
+                        {% block womenquestionbefore %}
+                        {% endblock %}
+
+                        {% block womenquestionafter %}
+                        {% endblock %}
+
+                        {% block allergyquestionbefore %}
+                        {% endblock %}
+
+                        {% block allergyquestionafter %}
+                        {% endblock %}
+
+                        {% block symptomquestionbefore %}
+                        {% endblock %}
+
+                        {% block symptomquestionafter %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </ol>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

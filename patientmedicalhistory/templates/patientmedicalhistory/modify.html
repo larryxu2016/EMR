@@ -1,0 +1,213 @@
+﻿{% extends "patientmedicalhistory/layout.html" %}
+{% load static %}
+{% block title %}Patient's Medical History{% endblock %}
+
+{% block head %}
+    <script src="{% static 'patientmedicalhistory/jslib/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'patientmedicalhistory/jslib/jquery.validate.min.js' %}"></script>
+{% endblock %}
+
+{% block scripts %}
+  
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('input[type=radio][value=0]').attr('checked', 'checked');
+
+            {% if medHis_info.pat_medhis_list %}
+                {% for pat_medhis_list_key, pat_medhis_list_val in medHis_info.pat_medhis_list.items %}
+                    $("input[name={{pat_medhis_list_key}}][value=1]").attr("checked", "checked");
+                    if ("{{pat_medhis_list_val}}".length > 1)
+                        $("input[name={{pat_medhis_list_key}}" + "Info]").val("{{pat_medhis_list_val}}");
+                {% endfor %}
+            {% endif %}
+	
+            $('#chkall').on('click', function() {
+		        if ($(this).is(':checked'))
+			        $("#symptoms input[type=radio][value=0]").attr("checked", "checked");
+		        else
+			        $("#symptoms input[type=radio][value=0]").removeAttr("checked");
+	        });
+
+	        <!-- Validation -->
+	        $('#medicalhistoryform').on('submit', function(e) {
+				 
+		        <!--validate text box if 'Yes' was chosen-->
+		        if ( ($("input[name=physicianCare][value=1]").is(":checked") && $("input[name=physicianCareInfo]").val().length === 0) ||
+			        ($("input[name=hospitalizedMajorOps][value=1]").is(":checked") && $("input[name=hospitalizedMajorOpsInfo]").val().length === 0) ||
+			        ($("input[name=headNeckInjury][value=1]").is(":checked") && $("input[name=headNeckInjuryInfo]").val().length === 0) ||
+			        ($("input[name=meds][value=1]").is(":checked") && $("textarea[name=medsInfo]").val().length === 0) ||
+			        ($("input[id=allergyOther][value=allergyOther]").is(":checked") && $("input[name=allergyOtherInfo]").val().length === 0) ) {
+		            e.preventDefault();
+		            alert("The textbox should not be empty if the 'Yes' button or some checkbox was chosen!");
+		        }
+
+	        });
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+{% if medHis_info %}
+    {% for medhis in medHis_info.medhis_list %}
+        
+        {% if medhis.type == "Question" %}
+            {% block questionbefore %}
+                <li>
+            {% endblock %}
+
+            <div class="medical-history-group">
+                <div class="medical-history"><label>{{medhis.med_history}}</label></div>
+                <div class="choice">
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-yes" value="1">
+                    <label>Yes</label>
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-no" value="0">
+                    <label>No</label>
+                </div>
+            </div>
+
+            {% block questionafter %}
+                <div class="medical-info">
+                <label>If yes</label>   
+
+                {% if medhis.label == "meds" %}         
+                    <textarea name="{{medhis.label}}Info" id="{{medhis.label}}Info"></textarea>
+                {% else %}
+                    <input type="text" name="{{medhis.label}}Info" id="{{medhis.label}}Info">
+                {% endif %}
+
+                </div>
+                </li>
+            {% endblock %}
+        {% elif medhis.type == "Choice" %}
+            {% block choicebefore %}
+                {% if medhis.label == "specialDiet" %}
+                    <li class="positioning-1">
+                {% elif medhis.label == "phenFenRedux" or medhis.label == "bisphosphonates" %}
+                    <li class="rowspan positioning-1">
+                {% elif medhis.label == "tobacco" or medhis.label == "controlledSub" %}
+                    <li class="rowspan positioning-2">
+                {% endif %}
+            {% endblock %}
+
+            <div class="medical-history-group">
+                <div class="medical-history"><label>{{medhis.med_history}}</label></div>
+                <div class="choice">
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-yes" value="1">
+                    <label>Yes</label>
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-no" value="0">
+                    <label>No</label>
+                </div>
+            </div>
+
+            {% block choiceafter %}
+                {% if medhis.label == "specialDiet" %}
+                    <div class="medical-info">
+                        <label style="visibility:hidden;">If yes</label>
+                        <fieldset>
+                            <legend>For women: Are you</legend>
+                {% else %}
+                    </li>
+                {% endif %}
+            {% endblock %}
+        {% elif medhis.type == "SymptomQuestion" %}
+            {% block symptomquestionbefore %}
+                {% if medhis.label == "aidsHiv" %}
+                    <li class="positioning-2">
+                        <div class="symptom-info">
+                            <fieldset id="symptoms">
+                                <legend>Do you have, or have you had, any of the following?</legend>
+
+                                <div id="checkNo">
+                                    <label>Check no for all:</label>
+                                    <input type="checkbox" id="chkall" name="chkall">
+                                </div>
+                    
+                                <div class="symptom-info-group">
+                {% endif %}
+            {% endblock %}
+
+            <div class="medical-history-group">
+                <div class="medical-history"><label>{{medhis.med_history}}</label></div>
+                <div class="choice">
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-yes" value="1">
+                    <label>Yes</label>
+                    <input type="radio" name="{{medhis.label}}" id="radio-btn-group-{{medhis.label}}-no" value="0">
+                    <label>No</label>
+                </div>
+            </div>
+
+            {% block symptomquestionafter %}
+                {% if medhis.label == "convuls" or medhis.label == "hrtTroubleDis" or medhis.label == "psychCare" %}
+                    </div>
+                    <div class="divider"></div>
+                    <div class="symptom-info-group">
+                {% elif medhis.label == "yellJaund" %}
+                    </div>
+                    </fieldset>
+                    </div>
+                        <div style="float:right; width:300px; margin-top:5px;">
+                            <input type="submit" value="Save">
+                            <a class="message" href="{% url 'dashboard:index'%}">
+                                <div style="width:38%; display:inline-block; margin-left:4px; padding: 14px; text-align:center; border:1px solid #4CAF50">
+                                    Dashboard
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+            
+        {% if medhis.type == "WomenQuestion" %}
+            {% block womenquestionbefore %}
+                <div class="women-info">
+            {% endblock %}
+        
+            <input type="checkbox" name="{{medhis.label}}" id="{{medhis.label}}" value="1">
+            <label>{{medhis.med_history}}</label>
+
+            {% block womenquestionafter %}
+                {% if medhis.label == "oralContr" %}
+                    </div>
+                    </fieldset>
+                    </div>
+                    </li>
+                {% else %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% elif medhis.type == "AllergyQuestion" %}
+            {% block allergyquestionbefore %}
+                {% if medhis.label == "allergyAspirin" %}
+                    <li class="positioning-2">
+                        <div class="allergy-info-group">
+                            <fieldset id="allergies">
+                                <legend>Are you allergic to any of the following?</legend>
+                                <div class="allergy-info">
+                {% else %} 
+                    <div class="allergy-info">
+                {% endif %}
+            {% endblock %}
+
+            <input type="checkbox" name="{{medhis.label}}" id="{{medhis.label}}" value="1">
+            <label>{{medhis.med_history}}</label>
+
+            {% block allergyquestionafter %}
+                {% if medhis.label == "allergyOther" %}
+                    <input type="text" name="{{medhis.label}}Info" id="{{medhis.label}}Info">
+                    </div>
+                    </fieldset>
+                    </div>
+                    </li>
+                {% else %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+        
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

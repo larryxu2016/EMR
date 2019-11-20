@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{% static 'patientmeds/style.css' %}" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header>
+    <h1>Patient's Medication</h1>
+</header>
+{% block content %}{% endblock %}
+
+{% block scripts %}{% endblock %}
+    <div style="float:right; width:300px; margin-top:5px;">
+        <a class="message" href="{% url 'dashboard:index'%}">
+            <div style="width:38%; display:inline-block; margin-left:4px; padding: 14px; text-align:center; border:1px solid #4CAF50">
+                Dashboard
+            </div>
+        </a>
+    </div>
+</body>
+</html>
