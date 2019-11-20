@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>EMR</Name>
+    <RootNamespace>EMR</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>d6ef3ee9-16e4-4763-9f0d-8039fbc7683b</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>EMR.settings</DjangoSettingsModule>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app\forms.py" />
+    <Compile Include="app\models.py" />
+    <Compile Include="app\tests.py" />
+    <Compile Include="app\views.py" />
+    <Compile Include="app\__init__.py" />
+    <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="dashboard\admin.py" />
+    <Compile Include="dashboard\apps.py" />
+    <Compile Include="dashboard\migrations\__init__.py" />
+    <Compile Include="dashboard\models.py" />
+    <Compile Include="dashboard\tests.py" />
+    <Compile Include="dashboard\urls.py" />
+    <Compile Include="dashboard\views.py" />
+    <Compile Include="dashboard\__init__.py" />
+    <Compile Include="login\admin.py" />
+    <Compile Include="login\apps.py" />
+    <Compile Include="login\migrations\0001_initial.py" />
+    <Compile Include="login\migrations\0002_patientlogin_email.py" />
+    <Compile Include="login\migrations\__init__.py" />
+    <Compile Include="login\models.py" />
+    <Compile Include="login\tests.py" />
+    <Compile Include="login\urls.py" />
+    <Compile Include="login\views.py" />
+    <Compile Include="login\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="EMR\__init__.py" />
+    <Compile Include="EMR\settings.py" />
+    <Compile Include="EMR\urls.py" />
+    <Compile Include="EMR\wsgi.py" />
+    <Compile Include="patientcontact\admin.py" />
+    <Compile Include="patientcontact\apps.py" />
+    <Compile Include="patientcontact\migrations\0001_initial.py" />
+    <Compile Include="patientcontact\migrations\0002_patientcontact_user_name.py" />
+    <Compile Include="patientcontact\migrations\__init__.py" />
+    <Compile Include="patientcontact\models.py" />
+    <Compile Include="patientcontact\tests.py" />
+    <Compile Include="patientcontact\urls.py" />
+    <Compile Include="patientcontact\views.py" />
+    <Compile Include="patientcontact\__init__.py" />
+    <Compile Include="patientinsurance\admin.py" />
+    <Compile Include="patientinsurance\apps.py" />
+    <Compile Include="patientinsurance\migrations\__init__.py" />
+    <Compile Include="patientinsurance\models.py" />
+    <Compile Include="patientinsurance\tests.py" />
+    <Compile Include="patientinsurance\urls.py" />
+    <Compile Include="patientinsurance\views.py" />
+    <Compile Include="patientinsurance\__init__.py" />
+    <Compile Include="patientmedicalhistory\admin.py" />
+    <Compile Include="patientmedicalhistory\apps.py" />
+    <Compile Include="patientmedicalhistory\migrations\0001_initial.py" />
+    <Compile Include="patientmedicalhistory\migrations\0002_patientmedhistory_info_type.py" />
+    <Compile Include="patientmedicalhistory\migrations\__init__.py" />
+    <Compile Include="patientmedicalhistory\models.py" />
+    <Compile Include="patientmedicalhistory\tests.py" />
+    <Compile Include="patientmedicalhistory\urls.py" />
+    <Compile Include="patientmedicalhistory\views.py" />
+    <Compile Include="patientmedicalhistory\__init__.py" />
+    <Compile Include="patientmeds\admin.py" />
+    <Compile Include="patientmeds\apps.py" />
+    <Compile Include="patientmeds\migrations\0001_initial.py" />
+    <Compile Include="patientmeds\migrations\0002_patientmeds_user_name.py" />
+    <Compile Include="patientmeds\migrations\__init__.py" />
+    <Compile Include="patientmeds\models.py" />
+    <Compile Include="patientmeds\tests.py" />
+    <Compile Include="patientmeds\urls.py" />
+    <Compile Include="patientmeds\views.py" />
+    <Compile Include="patientmeds\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\migrations\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\app\" />
+    <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\templates\" />
+    <Folder Include="app\templates\app\" />
+    <Folder Include="dashboard\" />
+    <Folder Include="dashboard\migrations\" />
+    <Folder Include="dashboard\migrations\__pycache__\" />
+    <Folder Include="dashboard\static\" />
+    <Folder Include="dashboard\static\dashboard\" />
+    <Folder Include="dashboard\templates\" />
+    <Folder Include="dashboard\templates\dashboard\" />
+    <Folder Include="dashboard\__pycache__\" />
+    <Folder Include="EMR\" />
+    <Folder Include="login\" />
+    <Folder Include="login\migrations\" />
+    <Folder Include="login\migrations\__pycache__\" />
+    <Folder Include="login\static\" />
+    <Folder Include="login\static\login\" />
+    <Folder Include="login\static\login\jslib\" />
+    <Folder Include="login\templates\" />
+    <Folder Include="login\templates\login\" />
+    <Folder Include="login\__pycache__\" />
+    <Folder Include="patientcontact\" />
+    <Folder Include="patientcontact\migrations\" />
+    <Folder Include="patientcontact\migrations\__pycache__\" />
+    <Folder Include="patientcontact\static\" />
+    <Folder Include="patientcontact\static\patientcontact\" />
+    <Folder Include="patientcontact\static\patientcontact\jslib\" />
+    <Folder Include="patientcontact\static\patientcontact\jslib\images\" />
+    <Folder Include="patientcontact\static\patientcontact\jslib\localization\" />
+    <Folder Include="patientcontact\templates\" />
+    <Folder Include="patientcontact\templates\patientcontact\" />
+    <Folder Include="patientcontact\__pycache__\" />
+    <Folder Include="patientinsurance\" />
+    <Folder Include="patientinsurance\migrations\" />
+    <Folder Include="patientinsurance\migrations\__pycache__\" />
+    <Folder Include="patientinsurance\static\" />
+    <Folder Include="patientinsurance\static\patientinsurance\" />
+    <Folder Include="patientinsurance\static\patientinsurance\jslib\" />
+    <Folder Include="patientinsurance\static\patientinsurance\jslib\images\" />
+    <Folder Include="patientinsurance\static\patientinsurance\jslib\localization\" />
+    <Folder Include="patientinsurance\templates\" />
+    <Folder Include="patientinsurance\templates\patientinsurance\" />
+    <Folder Include="patientinsurance\__pycache__\" />
+    <Folder Include="patientmedicalhistory\" />
+    <Folder Include="patientmedicalhistory\migrations\" />
+    <Folder Include="patientmedicalhistory\migrations\__pycache__\" />
+    <Folder Include="patientmedicalhistory\static\" />
+    <Folder Include="patientmedicalhistory\static\patientmedicalhistory\" />
+    <Folder Include="patientmedicalhistory\static\patientmedicalhistory\jslib\" />
+    <Folder Include="patientmedicalhistory\templates\" />
+    <Folder Include="patientmedicalhistory\templates\patientmedicalhistory\" />
+    <Folder Include="patientmedicalhistory\__pycache__\" />
+    <Folder Include="patientmeds\" />
+    <Folder Include="patientmeds\migrations\" />
+    <Folder Include="patientmeds\migrations\__pycache__\" />
+    <Folder Include="patientmeds\static\" />
+    <Folder Include="patientmeds\static\patientmeds\" />
+    <Folder Include="patientmeds\static\patientmeds\jslib\" />
+    <Folder Include="patientmeds\templates\" />
+    <Folder Include="patientmeds\templates\patientmeds\" />
+    <Folder Include="patientmeds\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dashboard\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="dashboard\static\dashboard\style.css" />
+    <Content Include="dashboard\templates\dashboard\dashboard.html" />
+    <Content Include="dashboard\templates\dashboard\index.html" />
+    <Content Include="dashboard\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="dashboard\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="dashboard\__pycache__\models.cpython-35.pyc" />
+    <Content Include="dashboard\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="dashboard\__pycache__\views.cpython-35.pyc" />
+    <Content Include="dashboard\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="login\migrations\__pycache__\0001_initial.cpython-35.pyc" />
+    <Content Include="login\migrations\__pycache__\0002_patientlogin_email.cpython-35.pyc" />
+    <Content Include="login\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="login\static\login\EMR-splash.jpg" />
+    <Content Include="login\static\login\jslib\jquery-3.1.1.min.js" />
+    <Content Include="login\static\login\jslib\jquery-ui.min.css" />
+    <Content Include="login\static\login\jslib\jquery-ui.min.js" />
+    <Content Include="login\static\login\jslib\jquery-ui.structure.min.css" />
+    <Content Include="login\static\login\jslib\jquery-ui.theme.min.css" />
+    <Content Include="login\static\login\jslib\jquery.validate.min.js" />
+    <Content Include="login\static\login\style.css" />
+    <Content Include="login\templates\login\changepwd.html" />
+    <Content Include="login\templates\login\index.html" />
+    <Content Include="login\templates\login\newUser.html" />
+    <Content Include="login\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="login\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="login\__pycache__\apps.cpython-37.pyc" />
+    <Content Include="login\__pycache__\models.cpython-35.pyc" />
+    <Content Include="login\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="login\__pycache__\views.cpython-35.pyc" />
+    <Content Include="login\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="login\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="patientcontact\migrations\__pycache__\0001_initial.cpython-35.pyc" />
+    <Content Include="patientcontact\migrations\__pycache__\0002_patientcontact_user_name.cpython-35.pyc" />
+    <Content Include="patientcontact\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientcontact\static\patientcontact\jslib\additional-methods.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\additional-methods.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_444444_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_555555_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_777620_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_777777_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-3.1.1.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.min.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.structure.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.structure.min.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.theme.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery-ui.theme.min.css" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery.form.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery.mockjax.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery.simulate.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery.validate.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\jquery.validate.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ar.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ar.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_bg.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_bg.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_bn_BD.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_bn_BD.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ca.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ca.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_cs.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_cs.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_da.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_da.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_de.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_de.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_el.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_el.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es_AR.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es_AR.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es_PE.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_es_PE.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_et.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_et.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_eu.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_eu.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fa.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fa.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fi.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fi.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fr.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_fr.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ge.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ge.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_gl.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_gl.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_he.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_he.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hr.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hr.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hu.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hu.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hy_AM.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_hy_AM.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_id.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_id.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_is.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_is.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_it.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_it.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ja.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ja.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ka.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ka.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_kk.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_kk.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ko.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ko.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_lt.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_lt.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_lv.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_lv.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_mk.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_mk.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_my.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_my.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_nl.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_nl.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_no.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_no.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pl.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pl.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pt_BR.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pt_BR.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pt_PT.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_pt_PT.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ro.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ro.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ru.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_ru.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_si.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_si.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sk.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sk.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sl.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sl.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sr.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sr.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sr_lat.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sr_lat.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sv.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_sv.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_th.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_th.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_tj.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_tj.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_tr.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_tr.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_uk.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_uk.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_vi.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_vi.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_zh.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_zh.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_zh_TW.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\messages_zh_TW.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_de.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_de.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_es_CL.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_es_CL.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_fi.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_fi.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_nl.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_nl.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_pt.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\localization\methods_pt.min.js" />
+    <Content Include="patientcontact\static\patientcontact\jslib\require.js" />
+    <Content Include="patientcontact\static\patientcontact\style.css" />
+    <Content Include="patientcontact\templates\patientcontact\index.html" />
+    <Content Include="patientcontact\templates\patientcontact\modify.html" />
+    <Content Include="patientcontact\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="patientcontact\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="patientcontact\__pycache__\models.cpython-35.pyc" />
+    <Content Include="patientcontact\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="patientcontact\__pycache__\views.cpython-35.pyc" />
+    <Content Include="patientcontact\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0001_initial.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0002_auto_20161008_0136.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0002_auto_20161023_2359.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0002_auto_20161024_1306.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0003_patientinsurance_user_name.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0004_auto_20161210_0208.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0005_auto_20161210_0209.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\0006_auto_20161210_0212.cpython-35.pyc" />
+    <Content Include="patientinsurance\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\additional-methods.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\additional-methods.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_444444_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_555555_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_777620_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_777777_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-3.1.1.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.min.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.structure.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.structure.min.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.theme.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery-ui.theme.min.css" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery.form.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery.mockjax.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery.simulate.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery.validate.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\jquery.validate.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ar.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ar.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_bg.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_bg.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_bn_BD.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_bn_BD.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ca.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ca.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_cs.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_cs.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_da.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_da.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_de.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_de.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_el.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_el.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es_AR.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es_AR.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es_PE.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_es_PE.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_et.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_et.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_eu.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_eu.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fa.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fa.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fi.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fi.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fr.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_fr.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ge.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ge.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_gl.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_gl.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_he.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_he.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hr.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hr.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hu.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hu.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hy_AM.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_hy_AM.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_id.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_id.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_is.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_is.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_it.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_it.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ja.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ja.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ka.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ka.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_kk.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_kk.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ko.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ko.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_lt.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_lt.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_lv.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_lv.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_mk.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_mk.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_my.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_my.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_nl.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_nl.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_no.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_no.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pl.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pl.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pt_BR.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pt_BR.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pt_PT.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_pt_PT.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ro.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ro.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ru.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_ru.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_si.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_si.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sk.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sk.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sl.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sl.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sr.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sr.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sr_lat.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sr_lat.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sv.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_sv.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_th.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_th.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_tj.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_tj.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_tr.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_tr.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_uk.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_uk.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_vi.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_vi.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_zh.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_zh.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_zh_TW.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\messages_zh_TW.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_de.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_de.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_es_CL.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_es_CL.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_fi.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_fi.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_nl.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_nl.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_pt.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\localization\methods_pt.min.js" />
+    <Content Include="patientinsurance\static\patientinsurance\jslib\require.js" />
+    <Content Include="patientinsurance\static\patientinsurance\style.css" />
+    <Content Include="patientinsurance\templates\patientinsurance\index.html" />
+    <Content Include="patientinsurance\templates\patientinsurance\modify.html" />
+    <Content Include="patientinsurance\templates\patientinsurance\modify2.html" />
+    <Content Include="patientinsurance\templates\patientinsurance\results.html" />
+    <Content Include="patientinsurance\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="patientinsurance\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="patientinsurance\__pycache__\models.cpython-35.pyc" />
+    <Content Include="patientinsurance\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="patientinsurance\__pycache__\views.cpython-35.pyc" />
+    <Content Include="patientinsurance\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\migrations\__pycache__\0001_initial.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\migrations\__pycache__\0002_patientmedhistory_info_type.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\static\patientmedicalhistory\jslib\jquery-3.1.1.min.js" />
+    <Content Include="patientmedicalhistory\static\patientmedicalhistory\jslib\jquery.validate.min.js" />
+    <Content Include="patientmedicalhistory\static\patientmedicalhistory\style.css" />
+    <Content Include="patientmedicalhistory\templates\patientmedicalhistory\index.html" />
+    <Content Include="patientmedicalhistory\templates\patientmedicalhistory\layout.html" />
+    <Content Include="patientmedicalhistory\templates\patientmedicalhistory\modify.html" />
+    <Content Include="patientmedicalhistory\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\__pycache__\models.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\__pycache__\views.cpython-35.pyc" />
+    <Content Include="patientmedicalhistory\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientmeds\migrations\__pycache__\0001_initial.cpython-35.pyc" />
+    <Content Include="patientmeds\migrations\__pycache__\0002_auto_20161119_1643.cpython-35.pyc" />
+    <Content Include="patientmeds\migrations\__pycache__\0002_patientmeds_user_name.cpython-35.pyc" />
+    <Content Include="patientmeds\migrations\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="patientmeds\static\patientmeds\jslib\jquery-3.1.1.min.js" />
+    <Content Include="patientmeds\static\patientmeds\jslib\jsgrid-theme.min.css" />
+    <Content Include="patientmeds\static\patientmeds\jslib\jsgrid.min.css" />
+    <Content Include="patientmeds\static\patientmeds\jslib\jsgrid.min.js" />
+    <Content Include="patientmeds\static\patientmeds\style.css" />
+    <Content Include="patientmeds\templates\patientmeds\index.html" />
+    <Content Include="patientmeds\templates\patientmeds\layout.html" />
+    <Content Include="patientmeds\__pycache__\admin.cpython-35.pyc" />
+    <Content Include="patientmeds\__pycache__\apps.cpython-35.pyc" />
+    <Content Include="patientmeds\__pycache__\models.cpython-35.pyc" />
+    <Content Include="patientmeds\__pycache__\urls.cpython-35.pyc" />
+    <Content Include="patientmeds\__pycache__\views.cpython-35.pyc" />
+    <Content Include="patientmeds\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\site.css" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\static\app\scripts\bootstrap.js" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.map" />
+    <Content Include="app\static\app\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="app\static\app\scripts\modernizr-2.6.2.js" />
+    <Content Include="app\static\app\scripts\respond.js" />
+    <Content Include="app\static\app\scripts\respond.min.js" />
+    <Content Include="app\static\app\scripts\_references.js" />
+    <Content Include="app\templates\app\about.html" />
+    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.html">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

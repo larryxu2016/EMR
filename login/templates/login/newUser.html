@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+    <script src="{% static 'login/jslib/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'login/jslib/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'login/jslib/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#loginform").on('submit', function(e) {
+				if ($("#loginform").valid()) {
+					e.preventDefault();
+					$.ajax({
+						type:"post",
+						url: "{% url 'login:createuser'%}",
+						data: $("#loginform").serialize(),
+						success:function(data){
+							if(data === "success")
+								window.location.replace("/patientcontact");
+							else
+								document.getElementById("error").innerHTML = "The user name is already used!.";
+						}
+					});
+				}
+			});
+			
+			$("#loginform").validate({
+				rules: {
+					user: {
+						required: true,
+						minlength: 6
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					pwd: {
+						required: true,
+						minlength: 6
+					},
+					pwdconfirm: {
+						required: true,
+						equalTo: "#pwd",
+						minlength: 6
+					}
+				},
+				messages: {
+					user: {
+						required: "The user name is required",
+						minlength: "The user name has to be at least 6 characters!"
+					},
+					email: {
+						required: "The email is required",
+						email: "Please input a valid email address!"
+					},
+					pwd: {
+						required: "The password is required!",
+						minlength: "The password has to be 6 digits."
+					},
+					pwdconfirm: {
+						required: "The password confirmation is required!",
+						minlength: "The password has to be 6 digits.",
+						equalTo: "Please confirm your password!"
+					}
+				}
+			});
+			
+		});
+		
+	</script>
+</head>
+<body>
+    
+    <div class="login-page">
+      <div class="form">
+		  <form id="loginform" method="post">
+          	  {% csrf_token %}
+              <span id="error"></span>
+              <input type="text" placeholder="username" id="user" name="user" />
+              <input type="text" placeholder="email" id="email" name="email" />
+              <input type="password" placeholder="password" id="pwd" name="pwd" />
+              <input type="password" placeholder="password confirm" id="pwdconfirm" name="pwdconfirm" />
+              <input type="submit" value="Save" />
+              <p class="message"><a href="{% url 'login:index'%}">Home Page</a></p>
+		  </form>
+      </div>
+    </div>
+    
+</body>
+</html>

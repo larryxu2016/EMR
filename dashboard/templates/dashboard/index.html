@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}" />
+    <script src="{% static 'dashboard/jslib/jquery-3.1.1.min.js' %}"></script>
+    <script>
+    $(document).ready( function() {
+		
+		$("button").first().focus();
+		stopPropagation("button", "mouseout");
+		
+		function stopPropagation(id, event) {
+			$(id).on(event, function(e) {
+				e.stopPropagation();
+				return false;
+			});
+		}
+
+		$(document).mousedown(function(e) {
+			if(e.target.nodeName != "BUTTON") {
+				e.stopImmediatePropagation();
+				e.preventDefault();
+			}
+		});
+		
+		$(".dashboard-page").keydown(function(e) {
+			switch(e.which) {
+				case 37: { // left
+					var $focusedElem = $(":focus");
+					var btnID = $focusedElem.attr('id') 
+					if ( btnID == 2) {
+						$("#1").focus();
+					}
+					else if (btnID == 1) {
+						$("#0").focus();
+					}
+					else if (btnID == 5) {
+						$("#4").focus();
+					}
+					else if (btnID == 4) {
+						$("#3").focus();
+					}
+					break;
+				}
+		
+				case 38: { // up
+					var $focusedElem = $(":focus");
+					var btnID = $focusedElem.attr('id') 
+					if (btnID == 3) {
+						$("#0").focus();
+					}
+					else if (btnID == 4) {
+						$("#1").focus();
+					}
+					else if (btnID == 5) {
+						$("#2").focus();
+					}
+					break;
+				}
+				case 39: { // right
+					var $focusedElem = $(":focus");
+					var btnID = $focusedElem.attr('id') 
+					if (btnID == 0) {
+						$("#1").focus();
+					}
+					else if (btnID == 1) {
+						$("#2").focus();
+					}
+					else if (btnID == 3) {
+						$("#4").focus();
+					}
+					else if (btnID == 4) {
+						$("#5").focus();
+					}
+					break;
+				}
+		
+				case 40: { // down
+					var $focusedElem = $(":focus");
+					var btnID = $focusedElem.attr('id') 
+					if (btnID == 0) {
+						$("#3").focus();
+					}
+					else if (btnID == 1) {
+						$("#4").focus();
+					}
+					else if (btnID == 2) {
+						$("#5").focus();
+					}
+					break;
+				}	
+		
+				default: return; // exit this handler for other keys
+			}
+			e.preventDefault(); // prevent the default action (scroll / move caret)
+		});
+
+    });
+    </script>
+</head>
+<body>
+	<div class="dashboard-page">
+	<div class="form">
+
+	<table>
+	<tr>
+		<td><button id="0" onclick='window.location.replace("{% url 'login:changepwdpage' %}");'>Change Password</button></td>
+		<td><button id="1" onclick='window.location.replace("{% url 'patientcontact:readContactInfo' %}");'>Contact Information</button></td>
+		<td><button id="2" onclick='window.location.replace("{% url 'patientinsurance:readInsInfo' %}");'>Insurance Information</button></td>
+	</tr>
+	<tr>
+		<td><button id="3" onclick='window.location.replace("{% url 'patientmedicalhistory:readMedHisInfo' %}");'>Medical History</button></td>
+		<td><button id="4" onclick='window.location.replace("{% url 'patientmeds:index' %}");'>Medications</button></td>
+		<td><button id="5" onclick='window.location.replace("{% url 'login:logoff' %}");'>Log out</button></td>
+	</tr>
+	</table>
+
+	</div>
+	</div>
+</body>
+</html>

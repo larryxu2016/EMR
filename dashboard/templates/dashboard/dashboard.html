@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}" />
+</head>
+<body>
+	<div class="dashboard-page">
+	<div class="form">
+    
+	<table>
+	<tr>
+		<td><button>User Information</button></td>
+		<td><button>Contact Information</button></td>
+		<td><button>Insurance Information</button></td>
+	</tr>
+	<tr>
+		<td><button>Medical History</button></td>
+		<td><button onclick="window.location.replace('/patientmeds');">Medications</button></td>
+		<td><button onclick="window.location.replace('/login');">Log out</button></td>
+	</tr>
+	</table>
+
+	</div>
+	</div>
+</body>
+</html>

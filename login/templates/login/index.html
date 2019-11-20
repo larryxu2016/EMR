@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+    <script src="{% static 'login/jslib/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'login/jslib/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'login/jslib/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			setTimeout(function() {
+				$('#splash').fadeOut(1000);
+			}, 2000);
+			
+			$("#loginform").on('submit', function(e) {
+				if ($("#loginform").valid()) {
+					e.preventDefault();
+					$.ajax({
+						type:"post",
+						url: "{% url 'login:verify'%}",
+						data: $("#loginform").serialize(),
+						success:function(data){
+							if(data === "success")
+								window.location.replace("/dashboard");
+							else
+								document.getElementById("error").innerHTML = "Error! Please contact administrator.";
+						}
+					});
+				}
+			});
+			
+		});
+		
+	</script>
+</head>
+<body>
+	<div id="splash">
+    	<center><img src="{% static 'login/EMR-splash.jpg'%}" /></center>
+	</div>
+    
+    <div class="login-page">
+      <div class="form">
+		  <form id="loginform" method="post">
+          	  {% csrf_token %}
+              <span id="error"></span>
+              <input type="text" placeholder="username" id="user" name="user" required/>
+              <input type="password" placeholder="password" id="pwd" name="pwd" required/>
+              <input type="submit" value="Login" />
+              <p class="message">Not registered? <a href="{% url 'login:newuser'%}">Create an account</a></p>
+		  </form>
+      </div>
+    </div>
+    
+</body>
+</html>
